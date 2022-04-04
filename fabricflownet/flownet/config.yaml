@@ -1,0 +1,41 @@
+hydra: 
+  run:
+    dir: outputs/${experiment}/${now:%Y-%m-%d_%H%M%S}_flownet
+  sweep:
+    dir: multirun/${experiment}/${now:%Y-%m-%d_%H%M%S}_flownet
+    subdir: ${hydra.job.num}
+
+experiment: dbg
+ 
+seed: 20
+
+base_path: path/to/base/dir # base directory containing train and val data directories
+train_name: null # train data directory name
+val_name: null # validation data directory name
+
+max_train_samples: null
+max_val_samples: null
+
+workers: 6
+batch_size: 32
+
+epochs: 300
+check_val_every_n_epoch: 1
+tboard_log_dir: tb
+csv_log_dir: csv
+
+net_cfg:
+  input_channels: 2
+  weight_decay: 0.0001
+  lr: 0.001
+  batchNorm: True
+  full_upsample: False
+
+spatial_aug: 0.9
+spatial_trans: 5 
+spatial_rot: 5 
+
+debug_viz: 
+  remove_occlusions: False
+  data_sample: False
+  

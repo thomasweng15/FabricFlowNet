@@ -1,0 +1,38 @@
+hydra: 
+  run:
+    dir: outputs/${experiment}/${now:%Y-%m-%d_%H%M%S}_picknet
+  sweep:
+    dir: multirun/${experiment}/${now:%Y-%m-%d_%H%M%S}_picknet
+    subdir: ${hydra.job.num}
+
+experiment: dbg
+
+seed: 0 
+
+base_path: path/to/base/dir # base directory containing train and val dirs
+train_name: null # train data directory name
+val_name: null # validation data directory name
+
+epochs: 150 # max training epochs 
+max_buf: 20000 # 7200 # max training buf
+workers: 6
+batch_size: 10 # batch size 
+
+check_val_every_n_epoch: 1
+tboard_log_dir: tb
+csv_log_dir: csv
+
+net_cfg:
+  lr: 0.0001
+  input_mode: flowonly
+  min_loss: True
+  model_type: split
+  pick: True # Whether it is pick network or place network
+  im_width: 200
+
+flow: /path/to/flow/ckpt 
+augment: False # dataset spatial aug flag
+
+debug_viz:
+  remove_occlusions: False
+  data_sample: False
