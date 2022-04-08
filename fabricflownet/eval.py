@@ -81,8 +81,6 @@ class EnvRollout(object):
                 coords_post = transition['coords_post'].squeeze()
                 goal_im = transition['goal_im'].cuda()
 
-                import IPython; IPython.embed()
-
                 if step == 0:
                     self.env.reset()
                     pyflex.set_positions(coords_pre)

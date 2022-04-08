@@ -1,0 +1,4 @@
+[submodule "softgym"]
+	path = softgym
+	url = git@github.com:Xingyu-Lin/softgym.git
+	branch = fabricflownet

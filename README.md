@@ -9,21 +9,14 @@ The ROS code for running FabricFlowNet on a real-world system will be released i
 
 ## File Structure
 ```angular2html
-├── ...
-├── FabricFlowNet
-|   |── data_collection         # Data collection code for FabricFlowNet and Lee et al. baselines.
-|   |── baselines
-|   |   |── Fabric-VSF          # Fabric-VSF baseline
-|   |   |── Lee-etal
-|   |   |   |── qnet            # 1-arm Lee-etal baseline
-|   |   |   |── qnet_bimanual   # 2-arm Lee-etal baseline
-|   |   └── ...
-|   |── FabricFlowNet
-|   |   |── FlowNet             # FlowNet training code
-|   |   └── PickNet             # PickNet training code
-|   |── goals                   # Simulation test goals for square towel, rectangular cloth, t-shirt
-|   └── ...
-└── ...
+├── FabricFlowNet/
+|   |── data/                   # Folder for datasets, saved runs, evaluation goals 
+|   └── fabricflownet/
+|       |── flownet/            # FlowNet model and training code
+|       |── picknet/            # PickNet model and training code
+|       |── eval.py             # Evaluation script
+|       └── utils.py            
+└── softgym/                    # SoftGym submodule
 ```
 
 ## Installation
@@ -31,14 +24,12 @@ The ROS code for running FabricFlowNet on a real-world system will be released i
 These instructions have been tested on Ubuntu 18.04 with NVIDIA GTX 3080/3090 GPUs. 
 SoftGym requires CUDA 9.2+, FFN training and inference have been tested on CUDA 11.1. 
 
-* Install [SoftGym](https://github.com/Xingyu-Lin/softgym), following the instructions in the README.
-    * Check out the `fabricflownet` branch to get the bimanual cloth environments `softgym/envs/bimanual_env.py` and `softgym/envs/bimanual_tshirt.py`.
-    * Compile PyFlex: `. prepare_1.0.sh` and `. compile_1.0.sh`. Check the compile script to make sure that the `CUDA_BIN_PATH` env variable is set to the path of the CUDA library you installed SoftGym with. More detailed Softgym installation instructions can be found in the original [repo](https://github.com/Xingyu-Lin/softgym).
-* Clone this repo into a sibling directory.
-    * Copy softgym into this directory: `cp -r ../softgym .`. If you have SoftAgent installed, alternatively you can install this repo within the SoftAgent directory. 
-    * In the FabricFlowNet directory, activate the conda environment and set environment variables: `. prepare_1.0.sh` 
-    * `conda env update -f environment.yml --prune`. Ensure that you install a PyTorch version that is suitable for your CUDA version.
-    * `pip install -e .`
+* Clone this repo
+* Set up the [softgym](https://github.com/Xingyu-Lin/softgym) submodule, tracking the `fabricflownet` branch: `git submodule update --init`
+* Compile PyFlex: `. prepare_1.0.sh` and `. compile_1.0.sh`. Check the compile script to make sure that the `CUDA_BIN_PATH` env variable is set to the path of the CUDA library you installed SoftGym with. More detailed Softgym installation instructions can be found in the original [repo](https://github.com/Xingyu-Lin/softgym).
+* In the FabricFlowNet directory, activate the conda environment and set environment variables: `. prepare_1.0.sh` 
+* `conda env update -f environment.yml --prune`. Ensure that you install a PyTorch version that is suitable for your CUDA version.
+* Install the repo as a python package: `pip install -e .`
 
 # Evaluation
 * Download the evaluation set and model weights into `./data/`:
