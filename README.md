@@ -1,7 +1,8 @@
 # FabricFlowNet: Bimanual Cloth Manipulation with a Flow-based Policy
 Thomas Weng, Sujay Bajracharya, Yufei Wang, Khush Agrawal, David Held
+Conference on Robot Learning 2021
 
-[[arXiv](https://arxiv.org/abs/2111.05623)][[project page](https://sites.google.com/view/fabricflownet)]
+[[arXiv](https://arxiv.org/abs/2111.05623)] [[pdf](https://arxiv.org/pdf/2111.05623.pdf)] [[project page](https://sites.google.com/view/fabricflownet)]
 
 This repo contains the code for running the FabricFlowNet model used to report the simulation results in the paper.
 
