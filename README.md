@@ -27,7 +27,7 @@ SoftGym requires CUDA 9.2+, FFN training and inference have been tested on CUDA 
 
 * Clone this repo
 * Set up the [softgym](https://github.com/Xingyu-Lin/softgym) submodule, tracking the `fabricflownet` branch: `git submodule update --init`
-* Compile PyFlex: `. prepare_1.0.sh` and `. compile_1.0.sh`. Check the compile script to make sure that the `CUDA_BIN_PATH` env variable is set to the path of the CUDA library you installed SoftGym with. More detailed Softgym installation instructions can be found in the original [repo](https://github.com/Xingyu-Lin/softgym).
+* Follow the softgym instructions to create a softygm conda environment. Then compile PyFlex: `. prepare_1.0.sh` and `. compile_1.0.sh`. Check the compile script to make sure that the `CUDA_BIN_PATH` env variable is set to the path of the CUDA library you installed SoftGym with. 
 * In the FabricFlowNet directory, activate the conda environment and set environment variables: `. prepare_1.0.sh` 
 * `conda env update -f environment.yml --prune`. Ensure that you install a PyTorch version that is suitable for your CUDA version.
 * Install the repo as a python package: `pip install -e .`
@@ -37,7 +37,7 @@ SoftGym requires CUDA 9.2+, FFN training and inference have been tested on CUDA 
     * Download and extract the [evaluation set](https://drive.google.com/file/d/1A9GUPXuVIC1K-LCCvzrK95-m9_UVSbPd/view?usp=sharing)
     * Download the [FlowNet weights](https://drive.google.com/file/d/1P7Upskczb-iqOsPjgcjsd4cnQQEuf-uY/view?usp=sharing), this does not need to be extracted
     * Download and extract the [PickNet weights](https://drive.google.com/file/d/1dCuSpMyvzkPU3AL7MeXeL7knP5ngyKvq/view?usp=sharing)
-* Run the evaluation script: `python fabricflownet/eval.py --run_name=data/picknet_run --checkpoint=105000 --goals=square_towel`
+* Run the evaluation script: `python fabricflownet/eval.py --run_path=data/picknet_run --ckpt=105000 --cloth_type=square_towel`
     * To run in headless mode, add the `--headless` flag; use the `-h` flag to see other available flags. 
 * Performance on square towel goals from the paper (in mm):
 ```
