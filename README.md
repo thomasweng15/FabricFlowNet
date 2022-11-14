@@ -52,8 +52,12 @@ all: 9.270 +/- 7.001
 one-step: 4.254 +/- 1.086
 mul-step: 16.793 +/- 5.143
 ```
-Performance on t-shirt goals will be available soon. 
-
+```
+Tshirt (mm)
+all: 31.628 +/- 10.892
+one-step: 24.459 +/- 4.876
+mul-step: 45.965 +/- 0.000
+```
 
 ## Citation
 If you find this code useful in your research, please feel free to cite:

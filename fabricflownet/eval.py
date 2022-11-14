@@ -29,14 +29,12 @@ class EnvRollout(object):
             self.env = BimanualEnv(use_depth=True,
                     use_cached_states=False,
                     horizon=1,
-                    use_desc=False,
                     action_repeat=1,
                     headless=args.headless,
                     shape='default' if 'square' in args.cloth_type else 'rect')
         elif args.cloth_type == 'tshirt':
             self.env = BimanualTshirtEnv(use_depth=True,
                     use_cached_states=False,
-                    use_desc=False,
                     horizon=1,
                     action_repeat=1,
                     headless=args.headless)
